@@ -43,7 +43,8 @@ test("Click get joke 2", (done) => {
   console.log('buttons', buttons);
   buttons.at(4).trigger("click");
   setTimeout(() => {
-    expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
+    const before = isNaN(wrapper.vm.countOrJoke);
+    expect(before).toEqual(true);
     done();
-  }, 2000);
+  }, 200);
 });
