@@ -45,9 +45,10 @@ test("Click add 1", () => {
 
 test("Click get joke 2", async (done) => {
   const ajaxResponse = await ajax();
+
   setTimeout(() => {
     console.log('AJAX: ', ajaxResponse)
-    expect(!!ajaxResponse).toEqual(true);
+    expect(!!ajaxResponse.joke).toEqual(true);
     done();
   }, 2000);
 });
