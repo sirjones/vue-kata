@@ -1,5 +1,5 @@
-import ajax from "../utils";
-export default {
+
+export default (ajax) => ({
   state() {
     return {
       count: 0,
@@ -28,4 +28,4 @@ export default {
       });
     },
   },
-};
+});

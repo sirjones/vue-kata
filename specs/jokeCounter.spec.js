@@ -4,6 +4,12 @@ import { mount, createLocalVue } from "@vue/test-utils";
 import JokeCounterComponent from "@/components/jokeCounter";
 import JokeCounterStore from "@/store/jokeCounter";
 import ajax from "../src/utils";
+const ajaxStub = () => {
+  return {
+    id: '2',
+    text: 'text'
+  }
+}
 
 const VueWithVuex = createLocalVue();
 VueWithVuex.use(Vuex);
@@ -43,12 +49,22 @@ test("Click add 1", () => {
   }, 2000);
 }); */
 
-test("Click get joke 2", async (done) => {
+test("Click get joke unit", (done) => {
+  const store = new Vuex.Store(JokeCounterStore(ajax));
+
+  setTimeout(() => {
+    console.log('AJAX: ', ajaxResponse)
+    expect(!!ajaxResponse.text).toEqual(true);
+    done();
+  }, 2000);
+});
+
+/* test("Click get joke 2", async (done) => {
   const ajaxResponse = await ajax();
 
   setTimeout(() => {
     console.log('AJAX: ', ajaxResponse)
-    expect(!!ajaxResponse.joke).toEqual(true);
+    expect(!!ajaxResponse.text).toEqual(true);
     done();
   }, 2000);
-});
+}); */
