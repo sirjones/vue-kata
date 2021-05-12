@@ -26,6 +26,7 @@ test("Click get joke", (done) => {
   const buttons = wrapper.findAll("button");
   buttons.at(4).trigger("click");
   setTimeout(() => {
+    console.log('isNaN(wrapper.vm.countOrJoke): ', isNaN(wrapper.vm.countOrJoke))
     expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
     done();
   }, 2000);

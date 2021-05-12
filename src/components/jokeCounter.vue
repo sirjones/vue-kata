@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>{{ countOrJoke }}</h1>
-    <button @click="add">Add 1</button>
-    <button @click="add2">Add 2</button>
-    <button @click="subtract">Subtract 1</button>
-    <button @click="subtract(3)">Subtract 3</button>
-    <button @click="getJoke">Get a joke (Async)</button>
+    <button class="one" @click="add">Add 1</button>
+    <button class="two" @click="add2">Add 2</button>
+    <button class="three" @click="subtract">Subtract 1</button>
+    <button class="four" @click="subtract(3)">Subtract 3</button>
+    <button class="five" @click="getJoke">Get a joke (Async)</button>
   </div>
 </template>
 
