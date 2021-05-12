@@ -34,17 +34,10 @@ test("Click add 1", () => {
 
 test("Click get joke 2", (done) => {
   const store = new Vuex.Store(JokeCounterStore);
-  const wrapper = mount(JokeCounterComponent, {
-    localVue: VueWithVuex,
-    store,
-  });
-  const buttons = wrapper.findAll("button");
-  expect(buttons.length).toEqual(5);
-  console.log('buttons', buttons);
-  buttons.at(4).trigger("click");
+  
+  store.dispatch("getJoke");
   setTimeout(() => {
-    const before = isNaN(wrapper.vm.countOrJoke);
-    expect(before).toEqual(true);
+    expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
     done();
   }, 200);
 });
