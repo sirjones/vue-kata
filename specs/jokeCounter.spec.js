@@ -34,10 +34,14 @@ test("Click add 1", () => {
 
 test("Click get joke 2", (done) => {
   const store = new Vuex.Store(JokeCounterStore);
-  
+
   store.dispatch("getJoke");
   setTimeout(() => {
-    expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
+    const counterJoke = store.state.joke || store.state.count;
+    console.log('store.state.joke', store.state.joke);
+    console.log('store.state.count', store.state.count);
+
+    expect(isNaN(counterJoke)).toEqual(true);
     done();
-  }, 200);
+  }, 2000);
 });
