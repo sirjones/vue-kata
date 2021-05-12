@@ -3,6 +3,7 @@ import { mount, createLocalVue } from "@vue/test-utils";
 
 import JokeCounterComponent from "@/components/jokeCounter";
 import JokeCounterStore from "@/store/jokeCounter";
+import JokeCountUtil from "@/utils";
 
 const VueWithVuex = createLocalVue();
 VueWithVuex.use(Vuex);
@@ -32,16 +33,20 @@ test("Click add 1", () => {
   }, 2000);
 }); */
 
-test("Click get joke 2", (done) => {
+/* test("Click get joke 2", (done) => {
   const store = new Vuex.Store(JokeCounterStore);
 
   store.dispatch("getJoke");
   setTimeout(() => {
-    const counterJoke = store.state.joke || store.state.count;
-    console.log('store.state.joke', store.state.joke);
-    console.log('store.state.count', store.state.count);
+    expect(!!store.state.joke).toEqual(true);
+    done();
+  }, 2000);
+}); */
 
-    expect(isNaN(counterJoke)).toEqual(true);
+test("Click get joke 2", (done) => {
+  const ajaxResponse = ajax();
+  setTimeout(() => {
+    expect(!!ajaxResponse).toEqual(true);
     done();
   }, 2000);
 });
