@@ -50,11 +50,10 @@ test("Click add 1", () => {
 }); */
 
 test("Click get joke unit", (done) => {
-  const store = new Vuex.Store(JokeCounterStore(ajax));
+  const store = new Vuex.Store(JokeCounterStore(ajaxStub));
 
   setTimeout(() => {
-    console.log('AJAX: ', ajaxResponse)
-    expect(!!ajaxResponse.text).toEqual(true);
+    expect(!!store.state.joke).toEqual(true);
     done();
   }, 2000);
 });
