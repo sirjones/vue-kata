@@ -3,7 +3,7 @@ import { mount, createLocalVue } from "@vue/test-utils";
 
 import JokeCounterComponent from "@/components/jokeCounter";
 import JokeCounterStore from "@/store/jokeCounter";
-import JokeCountUtil from "@/utils";
+import ajax from "../src/utils";
 
 const VueWithVuex = createLocalVue();
 VueWithVuex.use(Vuex);
@@ -43,9 +43,10 @@ test("Click add 1", () => {
   }, 2000);
 }); */
 
-test("Click get joke 2", (done) => {
-  const ajaxResponse = ajax();
+test("Click get joke 2", async (done) => {
+  const ajaxResponse = await ajax();
   setTimeout(() => {
+    console.log('AJAX: ', ajaxResponse)
     expect(!!ajaxResponse).toEqual(true);
     done();
   }, 2000);
