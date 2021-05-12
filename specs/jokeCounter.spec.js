@@ -17,7 +17,7 @@ test("Click add 1", () => {
   buttons.at(0).trigger("click");
   expect(wrapper.vm.countOrJoke).toEqual(1);
 });
-test("Click get joke", (done) => {
+/* test("Click get joke", (done) => {
   const store = new Vuex.Store(JokeCounterStore);
   const wrapper = mount(JokeCounterComponent, {
     localVue: VueWithVuex,
@@ -27,6 +27,22 @@ test("Click get joke", (done) => {
   buttons.at(4).trigger("click");
   setTimeout(() => {
     console.log('isNaN(wrapper.vm.countOrJoke): ', isNaN(wrapper.vm.countOrJoke))
+    expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
+    done();
+  }, 2000);
+}); */
+
+test("Click get joke 2", (done) => {
+  const store = new Vuex.Store(JokeCounterStore);
+  const wrapper = mount(JokeCounterComponent, {
+    localVue: VueWithVuex,
+    store,
+  });
+  const buttons = wrapper.findAll("button");
+  expect(buttons.length).toEqual(5);
+  console.log('buttons', buttons);
+  buttons.at(4).trigger("click");
+  setTimeout(() => {
     expect(isNaN(wrapper.vm.countOrJoke)).toEqual(true);
     done();
   }, 2000);
